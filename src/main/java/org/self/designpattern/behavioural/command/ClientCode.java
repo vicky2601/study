@@ -1,8 +1,26 @@
 package org.self.designpattern.behavioural.command;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ClientCode {
 
+    private static List<Order> orders = new ArrayList<>();
+
+    static class Order {
+        int id;
+        double amount;
+        String status;
+
+        Order(int id, double amount) {
+            this.id = id;
+            this.amount = amount;
+            this.status = "NEW";
+        }
+    }
     public static void main(String[] args) {
+
+        double total = orders.stream().mapToDouble(order -> order.amount).sum();
         // Create a Light object
         Light light = new Light();
 
@@ -23,4 +41,6 @@ public class ClientCode {
         remoteControl.pressButton();
 
     }
+
+    // create binary se
 }
